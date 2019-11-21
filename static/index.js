@@ -1,3 +1,5 @@
+"use strict"
+
 const root = document.body;
 const ChatModel = {
     ws: null,
@@ -6,7 +8,6 @@ const ChatModel = {
     username: "",
     joined: false,
 }
-const chatMessages = [];
 const sendMessage = () => {
     if (!!ChatModel.newMsg) {
         ChatModel.ws.send(
