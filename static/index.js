@@ -2,8 +2,7 @@ const root = document.body;
 const ChatModel = {
     ws: null,
     newMsg: '',
-    chatContent: '',
-    email: "aucbjames@gmail.com",
+    chatMessages: [],
     username: "",
     joined: false,
 }
@@ -12,7 +11,6 @@ const sendMessage = () => {
     if (!!ChatModel.newMsg) {
         ChatModel.ws.send(
             JSON.stringify({
-                email: ChatModel.email,
                 username: ChatModel.username,
                 message: ChatModel.newMsg,
             })
@@ -46,14 +44,14 @@ const Chat = {
         ChatModel.ws = new WebSocket('ws://' + window.location.host + '/ws');
         ChatModel.ws.addEventListener('message', (e) => {
             const msg = JSON.parse(e.data);
-            chatMessages.push({ content: `${msg.username} : ${msg.message}` });
+            ChatModel.chatMessages.push({ content: `${msg.username} : ${msg.message}` });
             m.redraw();
         })
     },
     view: function () {
         return m("main", [
             m("h1.heading", "Go Chat"),
-            m("ul.chat-messages", { id: "chat" }, chatMessages.map((msg) => {
+            m("ul.chat-messages", { id: "chat" }, ChatModel.chatMessages.map((msg) => {
                 return m("span", msg.content);
             })),
             !ChatModel.joined && m(".input-box", [
