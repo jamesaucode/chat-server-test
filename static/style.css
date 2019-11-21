@@ -1,0 +1,37 @@
+:root {
+    --gutter-sm: 5px;
+    --gutter-md: 10px;
+    --gutter-lg: 20px;
+}
+body {
+    max-width: 888px;
+    margin: 0 auto;
+}
+.chat-messages {
+    position: relative;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+}
+
+.chat-messages > span {
+    padding: var(--gutter-md);
+    font-size: 16px;
+}
+
+.input-box {
+    display: flex;
+    margin: var(--gutter-md) 0;
+}
+input {
+    border: 0;
+    padding: var(--gutter-sm);
+    background: #eee;
+    width: 100%;
+}
+
+button {
+    border:0;
+    padding: var(--gutter-sm);
+}

@@ -19,7 +19,7 @@ var broadcast = make(chan Message)
 var upgrader = websocket.Upgrader{} // Takes a normal http connection and upgrade it to a websocket
 
 func main() {
-	fs := http.FileServer(http.Dir("../public"))
+	fs := http.FileServer(http.Dir("./static"))
 	http.Handle("/", fs)
 	http.HandleFunc("/ws", handleConnections)
 	go handleMessages()
