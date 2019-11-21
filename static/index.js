@@ -1,6 +1,5 @@
 "use strict"
 
-const root = document.body;
 const ChatModel = {
     ws: null,
     newMsg: '',
@@ -66,4 +65,4 @@ const Chat = {
         ])
     }
 }
-m.mount(root, Chat);
+m.mount(document.body, Chat);
